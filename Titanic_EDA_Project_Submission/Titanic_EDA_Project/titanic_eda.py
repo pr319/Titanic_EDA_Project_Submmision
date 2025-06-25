@@ -1,0 +1,21 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+df = pd.read_csv("Train.csv")
+print(df.head())
+print("\n--- Data Info ---")
+print(df.info())
+print("\n--- Summary Statistics ---")
+print(df.describe())
+print("\n--- Missing Values ---")
+print(df.isnull().sum())
+df.hist(figsize=(12, 8))
+plt.tight_layout()
+plt.show()
+plt.figure(figsize=(10, 6))
+sns.heatmap(df.corr(), annot=True, cmap='coolwarm')
+plt.title("Correlation Heatmap")
+plt.show()
+sns.boxplot(x='Survived', y='Age', data=df)
+plt.title("Age distribution by Survival")
+plt.show()
